@@ -1388,7 +1388,7 @@ function new_xtr(nx,ny,t,nxp,nttl)
 			end
 		end,
 		function(_ENV) --wily
-			if plr.x>x-32 then
+			if plr.x>944 then
 				xp,plr.blim=38,300
 				if ttl==32767 then yv=-2 music"63" end
 				ttl-=1
@@ -1636,11 +1636,12 @@ function new_plr()
 					xv,slide=0,0
 					if not nohook then hook=999 end
 				end
+				x=mid(x,cr+127-w,cl)
 			end
 			
 			if y>116 then
 				--downward transition
-				if pitr and x>cr then
+				if pitr and x>=cr then
 					_g.seg+=1
 					loadseg"-1"
 				elseif pitl and x<cl+128 then
@@ -1667,9 +1668,9 @@ function new_plr()
 			end
 			
 			--update shoot,camera,and hud
-			shoot,_g.cx,x,kwpn[2][1],
+			shoot,_g.cx,kwpn[2][1],
 			kwpn[1]=max(0,shoot-1),
-			mid(x-60,cr,cl),mid(x,cr+127-w,cl),
+			mid(x-60,cr,cl),
 			hp,kwpn[wpn+4]
 			
 			--die if no health
